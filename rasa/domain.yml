@@ -1,0 +1,153 @@
+version: "3.1"
+
+intents:
+  - interrupt_process
+  - nlu_fallback
+  - greeting
+  - room_un_clean
+  - room_un_clean_cancel
+  - room_cleaned
+  - room_exchange
+  - room_replenishment
+
+actions:
+  - action_interrupt_process
+  - action_nlu_fallback
+  - action_greeting
+  - action_message_listener
+  - action_room_un_clean
+  - action_room_un_clean_cancel
+  - action_room_cleaned
+  - action_room_exchange
+  - action_room_replenishment
+
+entities:
+  - interrupt_process
+  - room_un_clean_room_no
+  - room_un_clean_remind_time
+  - room_un_clean_remind_time_unit
+  - room_cleaned_room_no
+  - room_exchange_from_room_no
+  - room_exchange_to_room_no
+  - room_replenishment_room_no
+  - room_replenishment_goods_item
+  - room_replenishment_goods_unit
+  - room_replenishment_goods_quantity
+
+lookup_tables:
+  - name: interrupt_process
+    elements: ./data/lookup_tables/interrupt_process.lookup
+
+slots:
+  # 当前需求意图
+  cur_required_intent:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+  # 当前需求槽位
+  cur_required_slot:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+  # 是否在对话循环中
+  action_in_loop:
+    type: bool
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  # 未打扫：房间号（必须）
+  room_un_clean_room_no:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: room_un_clean_room_no
+  # 未打扫：提醒时间
+  room_un_clean_remind_time:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: room_un_clean_remind_time
+  # 未打扫：提醒时间单位
+  room_un_clean_remind_time_unit:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: room_un_clean_remind_time_unit
+
+  # 已打扫：房间号（必须）
+  room_cleaned_room_no:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: room_cleaned_room_no
+
+  # 房间交换：交换前的房间号（必须）
+  room_exchange_from_room_no:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: room_exchange_from_room_no
+  # 房间交换：交换后的房间号（必须）
+  room_exchange_to_room_no:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: room_exchange_to_room_no
+
+  # 房间补货：补货商品
+  room_replenishment:
+    type: any
+    influence_conversation: false
+    mappings:
+      - type: custom
+  # 房间补货：房间号
+  room_replenishment_room_no:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: room_replenishment_room_no
+        auto_fill: true
+  # 房间补货：商品名称
+  room_replenishment_goods_item:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: room_replenishment_goods_item
+        auto_fill: true
+  # 房间补货：商品数量单位
+  room_replenishment_goods_unit:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: room_replenishment_goods_unit
+        auto_fill: true
+  # 房间补货：商品数量
+  room_replenishment_goods_quantity:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: room_replenishment_goods_quantity
+        auto_fill: true
+
+responses:
+  utter_nlu_fallback:
+    - text: 抱歉，我不太理解你说的话。我暂时只能提供酒店管理相关的服务
+  utter_greeting:
+    - text: 你好呀，有什么需要我帮忙的吗？
+
+session_config:
+  session_expiration_time: 300
+  carry_over_slots_to_new_session: true

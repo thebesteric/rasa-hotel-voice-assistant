@@ -1,0 +1,23 @@
+version: "3.1"
+
+rules:
+
+# 打招呼
+- rule: greeting
+  steps:
+  - intent: greeting
+  - action: action_message_listener
+  - action: action_greeting
+
+# 无法理解用户的信息
+- rule: nlu_fallback
+  steps:
+    - intent: nlu_fallback
+    - action: action_message_listener
+    - action: action_nlu_fallback
+
+# 中断流程
+- rule: interrupt_process
+  steps:
+    - intent: interrupt_process
+    - action: action_interrupt_process

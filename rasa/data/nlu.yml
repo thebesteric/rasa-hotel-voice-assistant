@@ -1,0 +1,159 @@
+version: "3.1"
+
+nlu:
+# 中断流程
+- intent: interrupt_process
+  examples: |
+    - [中断流程](interrupt_process)
+
+# 打招呼
+- intent: greeting
+  examples: |
+    - 你好
+    - 您好
+    - 您好呀
+    - hello
+    - hey
+    - hi
+
+# 房间打扫
+- intent: room_un_clean
+  examples: |
+    - 帮我记录一下[8001](room_un_clean_room_no)房间未打扫，[10](room_un_clean_remind_time)[分钟](room_un_clean_remind_time_unit)后提醒我打扫
+    - [1](room_un_clean_remind_time)个[小时](room_un_clean_remind_time_unit)后，提醒我打扫[8001](room_un_clean_room_no)房间
+    - [8008](room_un_clean_room_no)未清理
+    - [半个](room_un_clean_remind_time)[小时](room_un_clean_remind_time_unit)后，提醒我打扫[888](room_un_clean_room_no)房间
+    - [15](room_un_clean_remind_time)[分钟](room_un_clean_remind_time_unit)后，提醒我打扫房间
+    - [8001](room_un_clean_room_no)房间需要打扫
+    - [45](room_un_clean_remind_time)[分钟](room_un_clean_remind_time_unit)后提醒我打扫房间，房间号是[8008](room_un_clean_room_no)
+
+# 房间打扫-取消
+- intent: room_un_clean_cancel
+  examples: |
+    - 取消[8001](room_un_clean_room_no)房间的打扫
+    - 取消[6008](room_un_clean_room_no)的打扫
+    - [8888](room_un_clean_room_no)取消打扫
+    - [8001](room_un_clean_room_no)房间取消打扫
+    - 将[8001](room_un_clean_room_no)房间的打扫取消
+    - 帮我取消[8001](room_un_clean_room_no)房间的打扫计划
+    - 取消[5055](room_un_clean_room_no)的打扫计划
+
+# 房间打扫
+- intent: room_cleaned
+  examples: |
+    - [8008](room_cleaned_room_no)打扫完成
+    - [8008](room_cleaned_room_no)房间已打扫完毕
+    - [8008](room_cleaned_room_no)清理干净
+    - [8008](room_cleaned_room_no)房间已清理完成
+    - [8008](room_cleaned_room_no)已打扫
+    - [8008](room_cleaned_room_no)房间已经打扫
+    - [8008](room_cleaned_room_no)房间已经打扫干净
+    - [8008](room_cleaned_room_no)房间已清理干净
+    - [8008](room_cleaned_room_no)已收拾
+    - [8008](room_cleaned_room_no)房间已经收拾干净
+
+# 房间调整
+- intent: room_exchange
+  examples: |
+    - 我要调整房间
+    - 帮我交换房间
+    - 我要从[8008](room_exchange_from_room_no)房间调整到[8001](room_exchange_to_room_no)房间
+    - 将[8008](room_exchange_from_room_no)房间更换到[8001](room_exchange_to_room_no)房间
+    - 从[8008](room_exchange_from_room_no)变更到[8001](room_exchange_to_room_no)房间
+    - 调整[8008](room_exchange_from_room_no)房间到[8001](room_exchange_to_room_no)
+    - [8008](room_exchange_from_room_no)房间需要更换到[8001](room_exchange_to_room_no)
+    - 我要把[8008](room_exchange_from_room_no)房间换到[8001](room_exchange_to_room_no)房间
+    - 从[8008](room_exchange_from_room_no)搬到[8001](room_exchange_to_room_no)房间
+
+# 房间补货
+- intent: room_replenishment
+  examples: |
+    - [8001](room_replenishment_room_no)增加[1](room_replenishment_goods_quantity)[瓶](room_replenishment_goods_unit)[矿泉水](room_replenishment_goods_item)，[1](room_replenishment_goods_quantity)[把](room_replenishment_goods_unit)[梳子](room_replenishment_goods_item)
+    - [8001](room_replenishment_room_no)房间补货，[1](room_replenishment_goods_quantity)[瓶](room_replenishment_goods_unit)[沐浴露](room_replenishment_goods_item)，[2](room_replenishment_goods_quantity)[块](room_replenishment_goods_unit)[香皂](room_replenishment_goods_item)
+    - [8001](room_replenishment_room_no)房间缺少[1](room_replenishment_goods_quantity)[条](room_replenishment_goods_unit)[毛巾](room_replenishment_goods_item)，[3](room_replenishment_goods_quantity)[把](room_replenishment_goods_unit)[剃须刀](room_replenishment_goods_item)，[1](room_replenishment_goods_quantity)[瓶](room_replenishment_goods_unit)[洗发露](room_replenishment_goods_item)
+    - [8001](room_replenishment_room_no)补充[1](room_replenishment_goods_quantity)[把](room_replenishment_goods_unit)[牙刷](room_replenishment_goods_item)和[2](room_replenishment_goods_quantity)[块](room_replenishment_goods_unit)[香皂](room_replenishment_goods_item)
+    - [8001](room_replenishment_room_no)添加，[可乐](room_replenishment_goods_item)[4](room_replenishment_goods_quantity)[瓶](room_replenishment_goods_unit)，[矿泉水](room_replenishment_goods_item)[1](room_replenishment_goods_quantity)[瓶](room_replenishment_goods_unit)
+    - [8001](room_replenishment_room_no)再加，[3](room_replenishment_goods_quantity)[包](room_replenishment_goods_unit)[纸巾](room_replenishment_goods_item)，[卷纸](room_replenishment_goods_item)[1](room_replenishment_goods_quantity)[卷](room_replenishment_goods_unit)
+    - [8001](room_replenishment_room_no)进行补充货物，[3](room_replenishment_goods_quantity)[盒](room_replenishment_goods_unit)[茶叶](room_replenishment_goods_item)，[茶包](room_replenishment_goods_item)[2](room_replenishment_goods_quantity)[袋](room_replenishment_goods_unit)
+    - [8001](room_replenishment_room_no)补货，[3](room_replenishment_goods_quantity)[听](room_replenishment_goods_unit)[雪碧](room_replenishment_goods_item)，[咖啡](room_replenishment_goods_item)[2](room_replenishment_goods_quantity)[袋](room_replenishment_goods_unit)
+
+- regex: room_un_clean_room_no
+  examples: |
+    - \d{3,4}
+
+- regex: room_un_clean_remind_time
+  examples: |
+    - \d+(分钟|小时)
+
+- regex: room_cleaned_room_no
+  examples: |
+    - \d{3,4}
+
+- regex: room_exchange_from_room_no
+  examples: |
+    - 从(\d{3,4})房间
+    - 将(\d{3,4})房间
+    - 调整(\d{3,4})房间
+
+- regex: room_exchange_to_room_no
+  examples: |
+    - 到(\d{3,4})房间
+    - 更换到(\d{3,4})房间
+    - 调整到(\d{3,4})房间
+
+- regex: room_replenishment_room_no
+  examples: |
+    - \d{3,4}
+
+- regex: room_replenishment_goods_quantity
+  examples: |
+    - \d+
+
+- regex: room_replenishment_goods_unit
+  examples: |
+    - [\u4e00-\u9fa5]{1}
+
+- regex: room_replenishment_goods_item
+  examples: |
+    - [\u4e00-\u9fa5a-zA-Z]+
+
+- synonym: 你
+  examples: |
+    - 您
+
+- synonym: 调整
+  examples: |
+    - 换
+    - 换到
+    - 交换
+    - 变到
+    - 改变
+
+- synonym: 打扫完成
+  examples: |
+    - 打扫完毕
+    - 清理完毕
+    - 已经清理
+    - 收拾完毕
+    - 收拾干净
+    - 收拾完成
+    - 清理干净
+
+- synonym: 房间
+  examples: |
+    - 房号
+    - 房
+
+- synonym: 将
+  examples: |
+    - 从
+    - 由
+    - 自
+
+- synonym: 到
+  examples: |
+    - 更换到
+    - 调整到
+    - 变更到
+    - 搬到
+

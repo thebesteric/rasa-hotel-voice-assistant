@@ -1,0 +1,37 @@
+version: "3.1"
+
+stories:
+
+# 房间未打扫
+- story: room_un_clean
+  steps:
+  - intent: room_un_clean
+  - action: action_message_listener
+  - action: action_room_un_clean
+
+# 房间未打扫-取消
+- story: room_un_clean_cancel
+  steps:
+  - intent: room_un_clean_cancel
+  - action: action_message_listener
+  - action: action_room_un_clean_cancel
+
+# 房间已打扫
+- story: room_cleaned
+  steps:
+  - intent: room_cleaned
+  - action: action_message_listener
+  - action: action_room_cleaned
+
+# 房间交换
+- story: room_exchange
+  steps:
+  - intent: room_exchange
+  - action: action_message_listener
+  - action: action_room_exchange
+
+# 房间补货
+- story: room_replenishment
+  steps:
+    - intent: room_replenishment
+    - action: action_room_replenishment

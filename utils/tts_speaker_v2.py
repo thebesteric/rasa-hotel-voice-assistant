@@ -29,7 +29,7 @@ class TTSSpeaker:
 
     def save(self, text: str, file_path: str = "./output.wav"):
         # 要调用一下 say 方法，否则 save_to_file 报错
-        # self.engine.say(text)
+        self.engine.say(text)
         # 保存为音频文件
         self.engine.save_to_file(text, file_path)
         # 运行引擎并等待语音合成完成
@@ -41,4 +41,4 @@ class TTSSpeaker:
 if __name__ == '__main__':
 
     speaker = TTSSpeaker(rate=170)
-    print(speaker.save("你好，我是你的语音助手"))
+    print(speaker.save("你好，我是你的语音助手，有什么需要帮助的么？"))
